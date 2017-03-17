@@ -4,7 +4,7 @@
 *  @brief Implementa modulador msk
 **/
 module modulator(
-  input g_clk_tx,
+  input G_CLK_TX,
   input reset, enable,
   input [7:0] data_in,
   output logic[7:0] data_out
@@ -15,7 +15,7 @@ logic phase, to_send;
 logic [3:0] bit_to_send;
 logic [4:0] cont_bits;
   
-always_ff @( posedge g_clk_tx or negedge reset )
+always_ff @( posedge G_CLK_TX or negedge reset )
 begin  
   
 	if(~reset)
@@ -90,7 +90,6 @@ begin
 				29 : data_out = 78;
 				30 : data_out = 102;
 				31 : data_out = 128;
-				
 				
 				//dado = 1, fase = 0
 				32 : data_out = 128;
@@ -193,7 +192,6 @@ begin
 				125 : data_out = 102;
 				126 : data_out = 115;
 				127 : data_out = 128;
-				
 			endcase
 			if(cont_bits + 1'b1 <= 31) begin
 				cont_bits += 5'b1;
