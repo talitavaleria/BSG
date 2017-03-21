@@ -3,10 +3,10 @@
 *  @data March 2017
 *  @brief Implementa bsg TOP LEVEL
 **/
-module bsg(
-input SYS_CLK, G_CLK_TX, rst, valid,
-input [DATA_WIDTH-1:0] addr_in,
-input [DATA_WIDTH-1:0] data_in,
+module bsg #(parameter DATA_WIDTH=8)(
+input logic SYS_CLK, G_CLK_TX, rst, valid,
+input logic [DATA_WIDTH-1:0] addr_in,
+input logic [DATA_WIDTH-1:0] data_in,
 output logic ready,
 output logic [DATA_WIDTH-1:0] amba_data_out
 );
