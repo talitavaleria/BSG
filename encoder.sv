@@ -11,9 +11,9 @@ output logic q
 );
   
   
-  always @(posedge clock or negedge reset)
+  always @(posedge G_CLK_TX or negedge rst)
   begin 
-  if (~reset)
+  if (~rst)
     q <= 0;
   else
     case (q) 

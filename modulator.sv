@@ -15,7 +15,7 @@ logic phase, to_send;
 logic [3:0] bit_to_send;
 logic [4:0] cont_bits;
   
-always_ff @( posedge g_clk_tx or negedge reset )
+always_ff @( posedge G_CLK_TX or negedge reset )
 begin  
   
 	if(~reset)

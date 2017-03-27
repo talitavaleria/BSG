@@ -4,7 +4,7 @@
 *  @brief Implementa o protocolo de comunicacao
 **/
 
-module protocol #(int DATA_WIDTH = 8)(
+module protocol #(parameter DATA_WIDTH = 8)(
 input logic G_CLK_TX,
 input logic rst,
 input logic WRITE_ENABLE,
@@ -26,9 +26,9 @@ begin
 	if(~rst)
 	begin
 		BSG_CONTROL <= 'd0;
-		BSG_DATA_0 <= 'd0;
-		BSG_DATA_1 <= 'd0;
-		DATA_OUT <= 'd0;
+		BSG_DATA_0  <= 'd0;
+		BSG_DATA_1  <= 'd0;
+		DATA_OUT    <= 'd0;
 	end
 	else if(WRITE_ENABLE == 1)
 		case (ADDR_IN)
@@ -38,7 +38,7 @@ begin
 				  DATA_OUT <= BSG_DATA_0;
 			8'h12:
 				  DATA_OUT <= BSG_DATA_1;
-			/*default: Nao pode ter esse default, porque o endereço eh compartilhado com a TPU e o BD
+			/*default: Nao pode ter esse default, porque o endereco eh compartilhado com a TPU e o BD
 					DATA_OUT <= 'd0;*/
 		endcase
 	else
@@ -46,10 +46,10 @@ begin
 			8'h10: 
 				  BSG_CONTROL <= DATA_IN;
 			8'h11:
-				  BSG_DATA_0 <= DATA_IN;
+				  BSG_DATA_0  <= DATA_IN;
 			8'h12:
-				  BSG_DATA_1 <= DATA_IN;
-			/*default: Nao pode ter esse default, porque o endereço eh compartilhado com a TPU e o BD
+				  BSG_DATA_1  <= DATA_IN;
+			/*default: Nao pode ter esse default, porque o endereco eh compartilhado com a TPU e o BD
 				begin
 					BSG_CONTROL <= 'd0;
 					BSG_DATA_0  <= 'd0;
