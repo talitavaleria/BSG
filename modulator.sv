@@ -3,11 +3,11 @@
 *  @data March 2017
 *  @brief Implementa modulador msk
 **/
-module modulator(
-  input g_clk_tx,
+module modulator #(int DATA_WIDTH = 8)(
+  input G_CLK_TX,
   input reset, enable,
-  input [7:0] data_in,
-  output logic[7:0] data_out
+  input logic [DATA_WIDTH-1:0] data_in,
+  output logic [DATA_WIDTH-1:0] data_out
 );
 
 logic [7:0] addr;
@@ -35,7 +35,7 @@ begin
 					phase = ~phase;
 			end
 			
-			/** Define o endereço inicial do envio da modulaçao **/
+			/** Define o endereÃ§o inicial do envio da modulaÃ§ao **/
 			if( phase == 1'b0 ) begin 	// Indica que o bit atual enviara um seno com fase = 0
 				if( data_in[bit_to_send] == 1'b0 )
 					addr = 8'b0;
@@ -49,7 +49,7 @@ begin
 				else if( data_in[bit_to_send] == 1'b1 )
 					addr = 8'd96;
 			end
-			/** FIM - Definiçao de endereço **/
+			/** FIM - DefiniÃ§ao de endereÃ§o **/
 			
 			to_send = 1'b1;
 			

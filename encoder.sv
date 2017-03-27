@@ -4,10 +4,12 @@
 *  @brief Implementa um codificador Gray
 **/
 
-module encoder( clock, reset, q );
+module encoder( 
+input logic G_CLK_TX,
+input logic rst,
+output logic q
+);
   
-  input logic clock, reset;
-  output logic q;
   
   always @(posedge clock or negedge reset)
   begin 
