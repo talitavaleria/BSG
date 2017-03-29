@@ -15,12 +15,12 @@ input [DATA_WIDTH-1:0] data_in,
 output logic [DATA_WIDTH-1:0] data_out
 );
   
-logic data [DATA_WIDTH-1:0];
+logic [DATA_WIDTH-1:0] data;
   
 always @(posedge SYS_CLK or posedge rst)
 begin      
 	if(rst)
-	  data <= 0;
+	  data = 'h0;
 	
 	if(reg_addr == amba_addr)
 	begin
