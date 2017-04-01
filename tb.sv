@@ -4,7 +4,7 @@ logic clk, rst, enable;
 logic [7:0] data_in;
 logic [7:0] data_out;
 
-modulator DUT( .g_clk_tx(clk), .reset(rst), .enable(enable), .data_in(data_in), .data_out(data_out) );
+modulator DUT( .G_CLK_TX(clk), .reset(rst), .enable(enable), .data_in(data_in), .data_out(data_out) );
 
 initial begin
 	clk=1'b0;
